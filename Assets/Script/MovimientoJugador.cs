@@ -5,40 +5,57 @@ using UnityEngine.UI;
 
 public class MovimientoJugador : MonoBehaviour
 
-    [SerializeField]
-
-    GameObject pantallaFinal;
+   
 
 {
-    public float m_Speed = 200f;
-    Rigidbody m_Rigidbody;
-    int Coin = 0;
-    private object TotalCoin;
-    int Score;
-    public Text ScoreText;
+    [SerializeField]
     
+    GameObject pantallaFinal;
+
+    public float m_Speed = 200f;
+    Rigidbody Player;
+    Vector3 direction;
+    private object TotalCoin;
+    public int Score;
+    public Text ScoreText;
+    bool PlayerOn = true;
 
 
     void Start()
     {
-        m_Rigidbody = GetComponent<Rigidbody>();
+        Player = GetComponent<Rigidbody>();
         Score = 0;
     }
 
 
 
+    private void FixedUpdate()
+    {
+
+        Player.AddForce(direction, ForceMode.Impulse);
+
+    }
+
+
 
     void Update()
     {
+        if (PlayerOn == true)
+        {
+            direction.x = Input.GetAxis("Horizontal") * Time.deltaTime * m_Speed;
+            direction.z = Input.GetAxis("Vertical")  * Time.deltaTime * m_Speed;
         
-        Vector3 m_Input = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-        m_Rigidbody.MovePosition(transform.position + m_Input * Time.deltaTime * m_Speed);
-        
+            
+        }
+
         if (Score == 8)
         {
+            {
 
-            pantallaFinal.SetActive(true);
-            other.GetComponent<m_Rigidbody>().
+                pantallaFinal.SetActive(true);
+                PlayerOn = false;
+            
+             }
             
         }
 
