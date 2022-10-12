@@ -12,6 +12,13 @@ public class MovimientoJugador : MonoBehaviour
     
     GameObject pantallaFinal;
 
+    [SerializeField]
+
+    GameObject musicabase;
+    
+    [SerializeField]
+    GameObject particulas;
+
     public float m_Speed = 200f;
     Rigidbody Player;
     Vector3 direction;
@@ -54,7 +61,8 @@ public class MovimientoJugador : MonoBehaviour
 
                 pantallaFinal.SetActive(true);
                 PlayerOn = false;
-            
+                musicabase.SetActive(false);
+
              }
             
         }
@@ -72,7 +80,7 @@ public class MovimientoJugador : MonoBehaviour
          other.gameObject.SetActive(false);
          Score++;
          ScoreText.text = "Score = " + Score;
-
+         Instantiate(particulas, collision.transform.position, collision.transform.rotation);
         }
 
     }
