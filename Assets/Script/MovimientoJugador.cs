@@ -80,7 +80,7 @@ public class MovimientoJugador : MonoBehaviour
          other.gameObject.SetActive(false);
          Score++;
          ScoreText.text = "Score = " + Score;
-         Instantiate(particulas, collision.transform.position, collision.transform.rotation);
+         Instantiate(particulas, other.transform.position, other.transform.rotation);
         }
 
     }
