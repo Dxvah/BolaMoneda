@@ -4,6 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class MovimientoJugador : MonoBehaviour
+
+    [SerializeField]
+
+    GameObject pantallaFinal;
+
 {
     public float m_Speed = 200f;
     Rigidbody m_Rigidbody;
@@ -11,11 +16,17 @@ public class MovimientoJugador : MonoBehaviour
     private object TotalCoin;
     int Score;
     public Text ScoreText;
+    
+
+
     void Start()
     {
         m_Rigidbody = GetComponent<Rigidbody>();
         Score = 0;
     }
+
+
+
 
     void Update()
     {
@@ -26,14 +37,16 @@ public class MovimientoJugador : MonoBehaviour
         if (Score == 8)
         {
 
-
-            ScoreText.text = "You Win!";
-
+            pantallaFinal.SetActive(true);
+            other.GetComponent<m_Rigidbody>().
+            
         }
 
-    }
 
-    void OnTriggerEnter (Collider other)
+    }
+       
+        void OnTriggerEnter (Collider other)
+    
     {
     
         if (other.tag == "Coin")
