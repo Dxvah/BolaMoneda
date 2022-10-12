@@ -6,6 +6,9 @@ public class MovimientoJugador : MonoBehaviour
 {
     public float m_Speed = 200f;
     Rigidbody m_Rigidbody;
+    int Coin = 0;
+    private object TotalCoin;
+
 
     void Start()
     {
@@ -19,10 +22,17 @@ public class MovimientoJugador : MonoBehaviour
         m_Rigidbody.MovePosition(transform.position + m_Input * Time.deltaTime * m_Speed);
     }
 
+    void OnTriggerEnter (Collider other)
+    {
     
-    
+        if (other.tag == "Coin")
+        {
 
+         other.gameObject.SetActive(false);
 
+        }
+
+    }
 
 }
 
